@@ -3,14 +3,14 @@
 apiVersion: core.oam.dev/v1alpha2
 kind: ApplicationConfiguration
 metadata:
-  name: dbstat-helidon-appconf
-  namespace: dbstat-helidon
+  name: keycloak-helidon-appconf
+  namespace: keycloak-helidon
   annotations:
     version: v1.0.0
-    description: "DBstat Helidon application"
+    description: Keycloak Helidon application"
 spec:
   components:
-    - componentName: dbstat-helidon-component
+    - componentName: keycloak-helidon-component
       traits:
         - trait:
             apiVersion: oam.verrazzano.io/v1alpha1
@@ -21,7 +21,7 @@ spec:
             apiVersion: oam.verrazzano.io/v1alpha1
             kind: IngressTrait
             metadata:
-              name: dbstat-helidon-ingress
+              name: keycloak-helidon-ingress
             spec:
               rules:
                 - paths:

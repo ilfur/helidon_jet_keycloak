@@ -3,44 +3,28 @@
 apiVersion: core.oam.dev/v1alpha2
 kind: Component
 metadata:
-  name: dbstat-helidon-component
-  namespace: dbstat-helidon
+  name: keycloak-helidon-component
+  namespace: keycloak-helidon
 spec:
   workload:
     apiVersion: oam.verrazzano.io/v1alpha1
     kind: VerrazzanoHelidonWorkload
     metadata:
-      name: dbstat-helidon-workload
+      name: keycloak-helidon-workload
       labels:
-        app: dbstat-helidon
+        app: keycloak-helidon
         version: v1
     spec:
       deploymentTemplate:
         metadata:
-          name: dbstat-helidon-deployment
+          name: keycloak-helidon-deployment
         podSpec:
           containers:
-            - name: dbstat-helidon-container
-              image: docker.io/ilfur/helidon-dbstat
+            - name: keycloak-helidon-container
+              image: docker.io/ilfur/helidon-keycloak
               imagePullPolicy: Always
-              env:
-              - name: DBUSR
-                valueFrom:
-                  secretKeyRef:
-                    name: k8spdb-secret
-                    key: pdb_admin
-              - name: DBPWD
-                valueFrom:
-                  secretKeyRef:
-                    name: k8spdb-secret
-                    key: pdb_pwd
-              - name: DBURL
-                valueFrom:
-                  configMapKeyRef:
-                    name: k8spdb-config
-                    key: pdb_conn
               ports:
                 - containerPort: 8080
                   name: http
-          imagePullSecrets:
-              - name: docker.io
+#          imagePullSecrets:
+#              - name: docker.io
