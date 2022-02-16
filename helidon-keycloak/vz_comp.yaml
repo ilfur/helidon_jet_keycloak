@@ -1,0 +1,46 @@
+# Copyright (c) 2020, 2021, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+apiVersion: core.oam.dev/v1alpha2
+kind: Component
+metadata:
+  name: dbstat-helidon-component
+  namespace: dbstat-helidon
+spec:
+  workload:
+    apiVersion: oam.verrazzano.io/v1alpha1
+    kind: VerrazzanoHelidonWorkload
+    metadata:
+      name: dbstat-helidon-workload
+      labels:
+        app: dbstat-helidon
+        version: v1
+    spec:
+      deploymentTemplate:
+        metadata:
+          name: dbstat-helidon-deployment
+        podSpec:
+          containers:
+            - name: dbstat-helidon-container
+              image: docker.io/ilfur/helidon-dbstat
+              imagePullPolicy: Always
+              env:
+              - name: DBUSR
+                valueFrom:
+                  secretKeyRef:
+                    name: k8spdb-secret
+                    key: pdb_admin
+              - name: DBPWD
+                valueFrom:
+                  secretKeyRef:
+                    name: k8spdb-secret
+                    key: pdb_pwd
+              - name: DBURL
+                valueFrom:
+                  configMapKeyRef:
+                    name: k8spdb-config
+                    key: pdb_conn
+              ports:
+                - containerPort: 8080
+                  name: http
+          imagePullSecrets:
+              - name: docker.io

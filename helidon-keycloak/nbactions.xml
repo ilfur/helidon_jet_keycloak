@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-package skiptests</actionName>
+            <displayName>package skiptests</displayName>
+            <goals>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-exec</actionName>
+            <displayName>exec</displayName>
+            <goals>
+                <goal>exec:exec</goal>
+            </goals>
+        </action>
+    </actions>
