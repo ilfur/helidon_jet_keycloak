@@ -1,0 +1,24 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+-->
+<div class="oj-hybrid-padding">
+    <h1>User Details Area</h1>
+        <div id="loginstatus" class="oj-flex-item oj-md-12 oj-sm-12 right">
+            <oj-form-layout id="InfoForm" label-edge="inside">
+                <oj-input-text id="userName" value= "[[userLogin]]" label-hint="App username"></oj-input-text>
+                <table class="oj-table-container oj-table-grid-display" >
+                    <thead>
+                        <tr><th align="left">role names</th></tr>
+                    </thead>
+                    <tbody data-bind="foreach: userGroups" >
+                        <tr>
+                            <td data-bind="text: $data"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <oj-text-area class="oj-form-control-full-width" id="token" max-rows="-1" value= "[[userToken]]" label-hint="JWT Bearer token"></oj-text-area>
+            </oj-form-layout>
+        </div>
+</div>

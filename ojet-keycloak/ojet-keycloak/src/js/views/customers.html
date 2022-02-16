@@ -1,0 +1,14 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+-->
+<div class="oj-hybrid-padding">
+    <h1>Customers Content Area</h1>
+    <div id="loginstatus" class="oj-flex-item oj-md-12 oj-sm-12 right">
+        <oj-form-layout id="InfoForm" label-edge="inside">
+            <oj-button id="restart_btn" on-click='[[buttonClick]]'><span><oj-bind-text value="Call protected REST resource"></oj-bind-text></span></oj-button>
+            <oj-text-area class="oj-form-control-full-width" id="token" max-rows="-1" value= "[[restResponse]]" label-hint="Protected REST service response"></oj-text-area>
+        </oj-form-layout>
+    </div>
+</div>
