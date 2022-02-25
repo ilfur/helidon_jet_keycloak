@@ -89,7 +89,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+	    <!--
+	    <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>3.1.4</version>
@@ -119,7 +120,6 @@
                     </to>
                     <extraDirectories>
                         <paths>
-                            <!-- Copies from '/home/user/jib-extras' into '/extras' on the container -->
                             <path>
                                 <from>target</from>
                                 <into>/app</into>
@@ -132,7 +132,9 @@
                         </paths>
                     </extraDirectories>                
                 </configuration>
-            </plugin>        
+	    </plugin>
+	    -->
+
         </plugins>
     </build>
 </project>
